@@ -57,6 +57,8 @@ sed -e "s/set(GOOGLETEST_VERSION .*)/set(GOOGLETEST_VERSION %{version})/" -i CMa
 
 
 %build
+%set_build_flags
+CXXFLAGS="$CXXFLAGS -std=c++17"
 %cmake -DBUILD_SHARED_LIBS=ON \
        -DPYTHON_EXECUTABLE=%{__python3} \
        -Dgtest_build_tests=ON
