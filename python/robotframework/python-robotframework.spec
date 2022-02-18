@@ -40,7 +40,8 @@ BuildRequires:  python3-setuptools
 %py3_install
 
 %files -n python3-%{srcname}
-%doc README.rst
+%doc README.rst BUILD.rst INSTALL.rst CONTRIBUTING.rst
+%license LICENSE.txt
 %{python3_sitelib}/%{srcname}-*.egg-info/
 %{python3_sitelib}/robot/
 %{_bindir}/*
