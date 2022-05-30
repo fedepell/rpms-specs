@@ -1,0 +1,16 @@
+diff -ruN a/pyproject.toml b/pyproject.toml
+--- a/pyproject.toml	2022-04-18 20:24:55.000000000 +0200
++++ b/pyproject.toml	2022-05-30 08:53:08.282190744 +0200
+@@ -8,9 +8,9 @@
+     # "setuptools_scm[toml]>=3.4",
+     "setuptools_scm_git_archive",
+     "Cython>=0.29.2",
+-    "oldest-supported-numpy"
++    "numpy"
+ ]
+ 
+ [tools.setuptools_scm]
+ write_to = "vispy/version.py"
+-local_scheme = "dirty-tag"
+\ No newline at end of file
++local_scheme = "dirty-tag"
