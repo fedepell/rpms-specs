@@ -10,6 +10,7 @@ Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 Patch0:         0001-Numpy_dependency.patch
 BuildArch:      x86_64
 
+BuildRequires:  gcc
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
 BuildRequires:  python3-Cython
