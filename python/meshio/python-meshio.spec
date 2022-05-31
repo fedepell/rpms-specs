@@ -10,6 +10,7 @@ Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
+BuildRequires:  python3-numpy
 BuildRequires:  python3-rich
 
 %global _description %{expand:
@@ -53,7 +54,7 @@ Summary:        %{summary}
 %doc README.md
 %license LICENSE.txt
 %{_bindir}/meshio
-%{_datadir}/paraview-5.9/*
+%{_datadir}/paraview-5.9/plugins/*
 
 
 %changelog
