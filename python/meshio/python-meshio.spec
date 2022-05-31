@@ -54,7 +54,7 @@ Summary:        %{summary}
 %doc README.md
 %license LICENSE.txt
 %{_bindir}/meshio
-%{_datadir}/paraview-5.9/plugins/*
+%{_datadir}/paraview*
 
 
 %changelog
