@@ -2,12 +2,13 @@
 
 Name:           python-%{srcname}
 Version:        0.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        VisPy: interactive scientific visualization in Python
 License:        BSD
 URL:            https://github.com/vispy/vispy
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 Patch0:         0001-Numpy_dependency.patch
+Patch1:         0002-No_coverage_in_tests.patch
 BuildArch:      x86_64
 
 BuildRequires:  gcc
@@ -18,6 +19,9 @@ BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-setuptools_scm_git_archive
 BuildRequires:  python3-freetype
 BuildRequires:  python3-hsluv
+# Needed for testing
+BuildRequires:  python3dist(pytest)
+BuildRequires:  python3-meshio
 
 %global _description %{expand:
 VisPy is a high-performance interactive 2D/3D data visualization library. VisPy leverages the computational power of modern Graphics Processing Units (GPUs) through the OpenGL library to display very large datasets.}
@@ -52,6 +56,7 @@ Summary:        %{summary}
 
 
 %check
+%{python3} make test nobackend
 
 
 %files -n python3-%{srcname} -f %{pyproject_files}
@@ -60,5 +65,8 @@ Summary:        %{summary}
 
 
 %changelog
+* Wed Jun 01 2022 Federico Pellegrin <fede@evolware.org> - 0.10.0-2
+- Add also basic unit tests (nobackend ones, without coverage)
+
 * Mon May 30 2022 Federico Pellegrin <fede@evolware.org> - 0.10.0-1
 - First packaging of vispy
