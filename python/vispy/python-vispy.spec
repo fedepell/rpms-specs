@@ -62,7 +62,7 @@ Summary:        %{summary}
 # We need a bit of shuffling of PYTHONPATH and a cleanup not to leave
 # bytecode around that would fail packaging
 #
-# NOTE: tests as of now require also network access!
+# NOTE tests as of now require also network access
 export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=%{buildroot}/%{python3_sitearch}
 %{python3} make test nobackend
