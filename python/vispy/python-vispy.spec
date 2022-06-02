@@ -23,6 +23,7 @@ BuildRequires:  python3-hsluv
 BuildRequires:  python3dist(pytest)
 BuildRequires:  python3-meshio
 BuildRequires:  fontconfig
+BuildRequires:  libglvnd-gles
 
 %global _description %{expand:
 VisPy is a high-performance interactive 2D/3D data visualization library. VisPy leverages the computational power of modern Graphics Processing Units (GPUs) through the OpenGL library to display very large datasets.}
