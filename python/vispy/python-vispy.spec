@@ -40,7 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p 1 -n %{srcname}-%{version}
-# %patch -p1
 
 %generate_buildrequires
 %pyproject_buildrequires
@@ -56,7 +55,13 @@ Summary:        %{summary}
 
 
 %check
+# Tests are quite clumsy and rely on having the package installed.
+# We need a bit of shuffling of PYTHONPATH and a cleanup not to leave
+# bytecode around that would fail packaging
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=%{buildroot}/%{python3_sitearch}
 %{python3} make test nobackend
+rm -rf %{buildroot}/%{python3_sitearch}/.pytest_cache
 
 
 %files -n python3-%{srcname} -f %{pyproject_files}
@@ -65,7 +70,7 @@ Summary:        %{summary}
 
 
 %changelog
-* Wed Jun 01 2022 Federico Pellegrin <fede@evolware.org> - 0.10.0-2
+* Wed Jun 02 2022 Federico Pellegrin <fede@evolware.org> - 0.10.0-2
 - Add also basic unit tests (nobackend ones, without coverage)
 
 * Mon May 30 2022 Federico Pellegrin <fede@evolware.org> - 0.10.0-1
