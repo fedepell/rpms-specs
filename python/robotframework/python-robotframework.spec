@@ -2,11 +2,12 @@
 
 Name:           python-%{srcname}
 Version:        5.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Generic automation framework for acceptance testing and RPA
 License:        ASL 2.0
 URL:            https://github.com/robotframework/robotframework
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+Patch0:         0001-Patch_tests_with_Python_3_11.patch
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -59,6 +60,9 @@ Summary:        %{summary}
 
 
 %changelog
+* Fri Aug 05 2022 Federico Pellegrin <fede@evolware.org> - 5.0.1-3
+- Fix tests with Python 3.11
+
 * Thu May 19 2022 Piotr Szubiakowski <pszubiak@eso.org> - 5.0.1-2
 - Use pyproject_save_files macro
 
