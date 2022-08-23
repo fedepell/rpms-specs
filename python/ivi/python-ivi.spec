@@ -10,6 +10,8 @@ Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
+# Needed for testing
+BuildRequires:  python3dist(pytest)
 
 %global _description %{expand:
 This package is a Python-based interpretation of the Interchangeable Virtual Instrument standard, a software abstraction for electronic test equipment that is remotely controllable.
