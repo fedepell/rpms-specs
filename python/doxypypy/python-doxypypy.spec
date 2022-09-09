@@ -5,11 +5,13 @@
 
 Name:           python-%{srcname}
 Version:        0.8.8.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A more Pythonic version of doxypy, a Doxygen filter for Python.
 License:        GPL-2.0
 URL:            https://github.com/Feneric/doxypypy
 Source0:        %{url}/archive/%{commit}/%{srcname}-%{commit}.tar.gz
+# MR to fix string prefix at the end of docstring
+Patch0:         mr-87.patch
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -63,5 +65,9 @@ rm -rf doxypypy/test/sample_utf*ebom.py
 
 
 %changelog
+* Fri Sep 9 2022 Federico Pellegrin <fede@evolware.org> - 0.8.8.6-2
+- Add patch to fix the match of string prefix at end of docstring
+  (https://github.com/Feneric/doxypypy/pull/87)
+
 * Wed Sep 7 2022 Federico Pellegrin <fede@evolware.org> - 0.8.8.6-1
 - First packaging of python-doxypypy
