@@ -2,7 +2,7 @@
 
 Name:           python-%{srcname}
 Version:        5.0.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Generic automation framework for acceptance testing and RPA
 License:        ASL 2.0
 URL:            https://github.com/robotframework/robotframework
@@ -14,10 +14,11 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-jsonschema
 
 %global _description %{expand:
-Robot Framework is a generic open source automation framework for acceptance testing,
-acceptance test driven development (ATDD), and robotic process automation (RPA).
-It has simple plain text syntax and it can be extended easily with libraries implemented
-using Python or Java.}
+Robot Framework is a generic open source automation framework for acceptance
+testing, acceptance test driven development (ATDD), and robotic process
+automation (RPA).
+It has simple plain text syntax and it can be extended easily with libraries
+implemented using Python or Java.}
 
 
 %description
@@ -56,10 +57,13 @@ Summary:        %{summary}
 %files -n python3-%{srcname} -f %{pyproject_files}
 %doc README.rst BUILD.rst INSTALL.rst CONTRIBUTING.rst
 %license LICENSE.txt
-%{_bindir}/*
+%{_bindir}/{robot,rebot,libdoc}
 
 
 %changelog
+* Wed Sep 28 2022 Federico Pellegrin <fede@evolware.org> - 5.0.1-4
+- Improve spec file after package review
+
 * Fri Aug 05 2022 Federico Pellegrin <fede@evolware.org> - 5.0.1-3
 - Fix tests with Python 3.11
 
