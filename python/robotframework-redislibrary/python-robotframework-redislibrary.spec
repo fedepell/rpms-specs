@@ -6,7 +6,7 @@ Release:        1%{?dist}
 Summary:        RedisLibrary is a Robot Framework test library which provides keywords for manipulating in-memory data stores in Redis
 License:        MIT
 URL:            https://github.com/robotframework-thailand/robotframework-redislibrary
-Source:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -16,7 +16,8 @@ BuildRequires:  %{py3_dist pytest}
 
 
 %global _description %{expand:
-RedisLibrary is a Robot Framework test library which provides keywords for manipulating in-memory data stores in Redis.}
+RedisLibrary is a Robot Framework test library which provides keywords for
+manipulating in-memory data stores in Redis.}
 
 
 %description %{_description}
