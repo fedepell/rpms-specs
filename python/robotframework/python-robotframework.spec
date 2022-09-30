@@ -2,11 +2,12 @@
 
 Name:           python-%{srcname}
 Version:        5.0.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Generic automation framework for acceptance testing and RPA
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            https://github.com/robotframework/robotframework
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+# https://github.com/robotframework/robotframework/issues/4401
 Patch0:         0001-Patch_tests_with_Python_3_11.patch
 BuildArch:      noarch
 
@@ -61,6 +62,9 @@ Summary:        %{summary}
 
 
 %changelog
+* Fri Sep 30 2022 Federico Pellegrin <fede@evolware.org> - 5.0.1-5
+- Improve spec file after package review
+
 * Wed Sep 28 2022 Federico Pellegrin <fede@evolware.org> - 5.0.1-4
 - Improve spec file after package review
 
