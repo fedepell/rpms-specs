@@ -20,13 +20,6 @@ BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  python3-jsonschema
 
-# Bundled JavaScript for reports
-Provides:      bundled(jquery) = 3.5.1
-Provides:      bundled(jquery-highlight)
-Provides:      bundled(jquery-tablesorter) = 2.30.5
-Provides:      bundled(jquery-templates) = 1.0.0pre
-Provides:      bundled(jsxcompressor)
-
 
 %global _description %{expand:
 Robot Framework is a generic open source automation framework for acceptance
@@ -41,6 +34,13 @@ implemented using Python or Java.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
+
+# Bundled JavaScript for reports
+Provides:      bundled(jquery) = 3.5.1
+Provides:      bundled(jquery-highlight)
+Provides:      bundled(jquery-tablesorter) = 2.30.5
+Provides:      bundled(jquery-templates) = 1.0.0pre
+Provides:      bundled(jsxcompressor)
 
 %description -n python3-%{srcname}
 %{_description}
