@@ -2,9 +2,15 @@
 
 Name:           python-%{srcname}
 Version:        5.0.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Generic automation framework for acceptance testing and RPA
-License:        Apache-2.0
+# Robot Framework is licensed as Apache-2.0
+# Support libraries to display HTML results:
+#  - jQuery, jQuery Highlight plugin: MIT
+#  - jQuery Tablesorter, jQuery Templates plugin: MIT or GPLv2
+#  - JSXCompressor: Apache-2.0 or LGPLv3
+#  - OpenIconic icons (as base64): MIT
+License:        Apache-2.0 and MIT
 URL:            https://github.com/robotframework/robotframework
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 # https://github.com/robotframework/robotframework/issues/4401
@@ -13,6 +19,14 @@ BuildArch:      noarch
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-jsonschema
+
+# Bundled JavaScript for reports
+Provides:      bundled(jquery) = 3.5.1
+Provides:      bundled(jquery-highlight)
+Provides:      bundled(jquery-tablesorter) = 2.30.5
+Provides:      bundled(jquery-templates) = 1.0.0pre
+Provides:      bundled(jsxcompressor)
+
 
 %global _description %{expand:
 Robot Framework is a generic open source automation framework for acceptance
@@ -25,10 +39,8 @@ implemented using Python or Java.}
 %description
 %{_description}
 
-
 %package -n python3-%{srcname}
 Summary:        %{summary}
-
 
 %description -n python3-%{srcname}
 %{_description}
@@ -62,6 +74,9 @@ Summary:        %{summary}
 
 
 %changelog
+* Tue Oct 04 2022 Federico Pellegrin <fede@evolware.org> - 5.0.1-6
+- Improve spec file after package review (jquery bundling)
+
 * Fri Sep 30 2022 Federico Pellegrin <fede@evolware.org> - 5.0.1-5
 - Improve spec file after package review
 
