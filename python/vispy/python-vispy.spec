@@ -1,8 +1,8 @@
 %global srcname vispy
 
 Name:           python-%{srcname}
-Version:        0.10.0
-Release:        2%{?dist}
+Version:        0.11.0
+Release:        1%{?dist}
 Summary:        VisPy: interactive scientific visualization in Python
 License:        BSD
 URL:            https://github.com/vispy/vispy
@@ -27,7 +27,9 @@ BuildRequires:  libglvnd-gles
 BuildRequires:  python3-pillow
 
 %global _description %{expand:
-VisPy is a high-performance interactive 2D/3D data visualization library. VisPy leverages the computational power of modern Graphics Processing Units (GPUs) through the OpenGL library to display very large datasets.}
+VisPy is a high-performance interactive 2D/3D data visualization library.
+VisPy leverages the computational power of modern Graphics Processing Units
+(GPUs) through the OpenGL library to display very large datasets.}
 
 %description
 %{_description}
@@ -76,7 +78,10 @@ rm -rf %{buildroot}/%{python3_sitearch}/.pytest_cache
 
 
 %changelog
-* Wed Jun 02 2022 Federico Pellegrin <fede@evolware.org> - 0.10.0-2
+* Tue Oct 25 2022 Federico Pellegrin <fede@evolware.org> - 0.11.0-1
+- Bump to 0.11.0
+
+* Thu Jun 02 2022 Federico Pellegrin <fede@evolware.org> - 0.10.0-2
 - Add also basic unit tests (nobackend ones, without coverage)
 
 * Mon May 30 2022 Federico Pellegrin <fede@evolware.org> - 0.10.0-1
