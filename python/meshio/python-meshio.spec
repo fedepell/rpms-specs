@@ -1,7 +1,7 @@
 %global srcname meshio
 
 Name:           python-%{srcname}
-Version:        7.0.0
+Version:        5.3.4
 Release:        1%{?dist}
 Summary:        input/output for many mesh formats
 License:        MIT
@@ -12,6 +12,9 @@ BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
 BuildRequires:  python3-rich
+# Needed for tests:
+# BuildRequires:  python3-h5py
+
 
 %global _description %{expand:
 There are various mesh formats available for representing unstructured meshes. meshio can read and write all of the following and smoothly converts between them:
@@ -47,7 +50,12 @@ Summary:        %{summary}
 %pyproject_save_files meshio
 
 %check
-# %{python3} setup.py test
+# Standard tests use pytest-codeblocks, not packaged in Fedora
+# pytest --codeblocks
+# Can execute some more manual tests, but they require a checkout
+# with git-lfs as tarball has only refereces!
+# export PYTHONPATH=%{buildroot}/%{python3_sitelib}
+# pytest tests/
 
 
 %files -n python3-%{srcname} -f %{pyproject_files}
@@ -58,5 +66,5 @@ Summary:        %{summary}
 
 
 %changelog
-* Mon May 30 2022 Federico Pellegrin <fede@evolware.org> - 7.0.0-1
+* Tue Oct 25 2022 Federico Pellegrin <fede@evolware.org> - 5.3.4-1
 - First packaging of python-meshio
