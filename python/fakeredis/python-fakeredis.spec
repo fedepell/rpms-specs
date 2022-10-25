@@ -21,12 +21,18 @@ BuildRequires:  python3dist(sortedcontainers)
 # as aioredis is required (which is not packaged in Fedora)
 BuildRequires:  python3dist(redis)
 
+%if %{with tests}
 # Test dependencies:
 BuildRequires:  python3dist(pytest)
 BuildRequires:  python3dist(pytest-mock)
 BuildRequires:  poetry
 # Uses fixtures not present in previous versions
 BuildRequires:  python3dist(pytest-asyncio) >= 0.19
+BuildRequires:  python3dist(flaky)
+BuildRequires:  python3dist(hypothesis)
+BuildRequires:  python3dist(mypy)
+BuildRequires:  python3dist(pytest-trio)
+%endif
 
 
 %global _description %{expand:
