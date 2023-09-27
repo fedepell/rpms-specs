@@ -6,11 +6,11 @@ snmplabs.com/snmpsim/}
 
 Name:           python-%{srcname}
 Version:        0.4.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        SNMP Simulator
 License:        BSD-2-Clause
 URL:            https://github.com/etingof/snmpsim
-Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildArch:      noarch
 
 
@@ -27,6 +27,7 @@ Docs for python-snmpsim %{srcname}
 Summary:        %{summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-wheel
+BuildRequires:  python3-pysnmp
 
 %description -n python3-%{srcname} %{common_description}
 
@@ -68,6 +69,9 @@ PYTHONPATH=.:$PYTHONPATH python scripts/mib2dev.py --mib-module=SNMPv2-MIB
 %doc docs/build/html
 
 %changelog
+* Wed Sep 27 2023 Federico Pellegrin <fede@evolware.org> - 0.4.7-2
+- Fix pysnmp dependency and download URL
+
 * Wed Sep 27 2023 Federico Pellegrin <fede@evolware.org> - 0.4.7-1
 - Init at 0.4.7
 
