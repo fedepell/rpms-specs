@@ -6,7 +6,7 @@ snmplabs.com/snmpsim/}
 
 Name:           python-%{srcname}
 Version:        0.4.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        SNMP Simulator
 License:        BSD-2-Clause
 URL:            https://github.com/etingof/snmpsim
@@ -41,13 +41,13 @@ BuildRequires:  python3-pysnmp
 
 %build
 %pyproject_wheel
-cd docs
-make html
+make -C docs html
 
 %install
 %pyproject_install
 %pyproject_save_files %{srcname}
-
+mkdir -p %{buildroot}/%{_datadir}
+mv %{buildroot}/usr/snmpsim/ %{buildroot}/%{_datadir}
 
 %check
 # One of the tests connects to some SNMP server, so run (explicitly) just a local one.
@@ -55,12 +55,12 @@ make html
 PYTHONPATH=.:$PYTHONPATH python scripts/mib2dev.py --mib-module=SNMPv2-MIB
 
 %files -n python3-%{srcname} -f %{pyproject_files}
-/usr/bin/datafile.py
-/usr/bin/mib2dev.py
-/usr/bin/pcap2dev.py
-/usr/bin/snmprec.py
-/usr/bin/snmpsimd.py
-/usr/snmpsim/*
+%{_bindir}/datafile.py
+%{_bindir}/mib2dev.py
+%{_bindir}/pcap2dev.py
+%{_bindir}/snmprec.py
+%{_bindir}/snmpsimd.py
+%{_datadir}/snmpsim/*
 
 %license LICENSE.txt
 %doc README.md CHANGES.txt TODO.txt THANKS.txt
@@ -69,6 +69,9 @@ PYTHONPATH=.:$PYTHONPATH python scripts/mib2dev.py --mib-module=SNMPv2-MIB
 %doc docs/build/html
 
 %changelog
+* Thu Sep 28 2023 Federico Pellegrin <fede@evolware.org> - 0.4.7-3
+- Move program data to /usr/share/snmpsim
+
 * Wed Sep 27 2023 Federico Pellegrin <fede@evolware.org> - 0.4.7-2
 - Fix pysnmp dependency and download URL
 
