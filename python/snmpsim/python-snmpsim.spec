@@ -6,7 +6,7 @@ snmplabs.com/snmpsim/}
 
 Name:           python-%{srcname}
 Version:        0.4.7
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        SNMP Simulator
 License:        BSD-2-Clause
 URL:            https://github.com/etingof/snmpsim
@@ -28,6 +28,8 @@ Summary:        %{summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-wheel
 BuildRequires:  python3-pysnmp
+BuildRequires:  python3-pip
+BuildRequires:  python3-ply
 
 %description -n python3-%{srcname} %{common_description}
 
@@ -69,6 +71,9 @@ PYTHONPATH=.:$PYTHONPATH python scripts/mib2dev.py --mib-module=SNMPv2-MIB
 %doc docs/build/html
 
 %changelog
+* Wed Oct 04 2023 Federico Pellegrin <fede@evolware.org> - 0.4.7-4
+- Add a couple of dependencies details after work on OBS
+
 * Thu Sep 28 2023 Federico Pellegrin <fede@evolware.org> - 0.4.7-3
 - Move program data to /usr/share/snmpsim
 
